@@ -1,13 +1,14 @@
+import 'package:ai_assistent/helper/pref.dart';
 import 'package:ai_assistent/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
+
 
 Future <void> main() async {
 WidgetsFlutterBinding.ensureInitialized();
 
-Hive.defaultDirectory = (await  getApplicationDocumentsDirectory()).path;
+Pref.initialize();
+
 await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 

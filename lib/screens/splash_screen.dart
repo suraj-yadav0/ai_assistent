@@ -1,8 +1,9 @@
+import 'package:ai_assistent/helper/global.dart';
+import 'package:ai_assistent/helper/pref.dart';
 import 'package:ai_assistent/screens/home_screen.dart';
 import 'package:ai_assistent/screens/onboarding_screen.dart';
 import 'package:ai_assistent/widgets/custom_loading.dart';
 import 'package:flutter/material.dart';
-import 'package:ai_assistent/helper/global.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +17,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const OnboardingScreen()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (_) => Pref.showOnboarding
+              ? const  OnboardingScreen()
+              : const HomeScreen()));
     });
   }
 
@@ -27,24 +31,28 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
         body: SizedBox(
       width: double.maxFinite,
-      child: Column(
-        children: [
-          const Spacer(flex: 2,),
-          Card(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Padding(
-              padding: EdgeInsets.all(mq.width * .5),
-              child: Image.asset(
-                "assets/images/ai.png",
-                width: mq.width * .4,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Spacer(
+              flex: 2,
+            ),
+            Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              child: Padding(
+                padding: EdgeInsets.all(mq.width * .5),
+                child: Image.asset(
+                  "assets/images/ai.png",
+                  width: mq.width * .4,
+                ),
               ),
             ),
-          ),
-          const Spacer(),
-          const CustomLaoding(),
-          const Spacer(),
-        ],
+            const Spacer(),
+            const CustomLaoding(),
+            const Spacer(),
+          ],
+        ),
       ),
     ));
   }
