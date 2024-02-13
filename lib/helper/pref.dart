@@ -3,7 +3,7 @@ import 'package:path_provider/path_provider.dart';
 
 class Pref{
 
-  static late Box ?_box;
+  static late Box _box;
   static Future<void> initialize() async {
 
     
@@ -17,6 +17,6 @@ _box = Hive.box(name: 'myData');
   // }
 
 
-  static bool get showOnboarding => _box?.get('showOnboarding', defaultValue: true);
-  static set showOnboarding(bool v) => _box?.put('showOnboarding' , v);  
+  static bool get showOnboarding => _box.get('showOnboarding', defaultValue: true);
+  static set showOnboarding(bool v) => _box.put('showOnboarding' , v);  
 }
