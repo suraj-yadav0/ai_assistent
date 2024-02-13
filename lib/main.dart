@@ -7,7 +7,8 @@ import 'package:flutter/services.dart';
 Future <void> main() async {
 WidgetsFlutterBinding.ensureInitialized();
 
-Pref.initialize();
+
+ Pref.initialize();
 
 await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);

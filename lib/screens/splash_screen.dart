@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (_) => Pref.showOnboarding
-              ? const  OnboardingScreen()
+              ? const OnboardingScreen()
               : const HomeScreen()));
     });
   }
@@ -29,9 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
     //intialize media querry
     mq = MediaQuery.sizeOf(context);
     return Scaffold(
-        body: SizedBox(
-      width: double.maxFinite,
-      child: SingleChildScrollView(
+      body: SizedBox(
+        width: double.maxFinite,
         child: Column(
           children: [
             const Spacer(
@@ -54,6 +53,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ],
         ),
       ),
-    ));
+    );
   }
 }
