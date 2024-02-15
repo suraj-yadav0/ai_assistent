@@ -42,6 +42,7 @@ dependencies:
   isar_flutter_libs: ^4.0.0-dev.13
   path_provider: ^2.1.0
   get: ^4.6.6
+  flutter_animate: ^4.5.0
 
 dev_dependencies:
   flutter_test:
