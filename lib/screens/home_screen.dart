@@ -1,5 +1,6 @@
 
 
+import 'package:ai_assistent/api/apis.dart';
 import 'package:ai_assistent/helper/global.dart';
 import 'package:ai_assistent/helper/pref.dart';
 import 'package:ai_assistent/model/home_type.dart';
@@ -28,6 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     //initalize media querry
     mq = MediaQuery.sizeOf(context);
+
+
+  //  APIs.getAnswer('Hi');
+
+
     Animate.restartOnHotReload = true;
     return Scaffold(
         appBar: AppBar(

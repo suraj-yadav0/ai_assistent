@@ -23,10 +23,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return  GetMaterialApp(
       title: appName,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      theme: ThemeData(appBarTheme:  const AppBarTheme(  elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+         iconTheme: IconThemeData(color: Colors.blue),
+            titleTextStyle: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.w500, color: Colors.blue),)),
+      home: const SplashScreen(),
     );
   }
 }

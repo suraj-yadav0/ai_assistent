@@ -11,26 +11,29 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Animate.restartOnHotReload = true;
-    return Card(
-      color: Colors.blue.withOpacity(.2),
-      child: Row(
-        children: [
-          Padding(
-            padding: homeType.padding,
-            child: Lottie.asset(homeType.lottie,
-                width: mq.width * .35),
-          ),
-          const Spacer(),
-         Text(
-            homeType.title,
-            style: const  TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w500, letterSpacing: 1),
-          ),
-          const Spacer(
-            flex: 2,
-          )
-        ],
-      ),
-    ).animate().fade(begin: .5,duration: 1.seconds,curve: Curves.easeIn);
+    return InkWell(
+      onTap: homeType.onTap,
+      child: Card(
+        color: Colors.blue.withOpacity(.2),
+        child: Row(
+          children: [
+            Padding(
+              padding: homeType.padding,
+              child: Lottie.asset(homeType.lottie,
+                  width: mq.width * .35),
+            ),
+            const Spacer(),
+           Text(
+              homeType.title,
+              style: const  TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.w500, letterSpacing: 1),
+            ),
+            const Spacer(
+              flex: 2,
+            )
+          ],
+        ),
+      ).animate().fade(begin: .5,duration: 1.seconds,curve: Curves.easeIn),
+    );
   }
 }
