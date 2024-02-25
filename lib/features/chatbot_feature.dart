@@ -13,6 +13,7 @@ class ChatBotFeature extends StatefulWidget {
 
 class _ChatBotFeatureState extends State<ChatBotFeature> {
   final _c = ChatController();
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +28,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
             Expanded(
                 child: TextFormField(
               controller: _c.texc,
+              
               textAlign: TextAlign.center,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               decoration: const InputDecoration(
@@ -57,6 +59,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
       ),
       body: Obx(
         () => ListView(
+          controller: _c.scrollc,
           physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.only(top: mq.height * 0.02, bottom: mq.height * .01),
           children:

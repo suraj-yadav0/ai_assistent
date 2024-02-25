@@ -6,16 +6,24 @@ import 'package:get/get.dart';
 class ChatController extends GetxController {
   final texc = TextEditingController();
 
-  final list = <Message>[Message(msg: "Hello, How Can I help You ?", msgType: MessageType.bot)].obs;
+  final scrollc = ScrollController();
 
- Future <void> askQuestion() async {
+  final list = <Message>[
+    Message(msg: "Hello, How Can I help You ?", msgType: MessageType.bot)
+  ].obs;
+
+  Future<void> askQuestion() async {
     if (texc.text.trim().isNotEmpty) {
       //user data
       list.add(Message(msg: texc.text, msgType: MessageType.user));
 
-      list.add(Message(msg: 'Please Wait..', msgType: MessageType.bot));
+      list.add(Message(msg: '', msgType: MessageType.bot));
+      _scrollDown();
+
+
 
       final res = await APIs.getAnswer(texc.text);
+      _scrollDown();
 
       list.removeLast();
 
@@ -24,5 +32,10 @@ class ChatController extends GetxController {
 
       texc.text = "";
     }
+  }
+
+  void _scrollDown() {
+    scrollc.animateTo(scrollc.position.maxScrollExtent,
+        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
   }
 }
