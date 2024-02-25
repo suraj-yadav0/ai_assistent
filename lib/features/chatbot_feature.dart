@@ -35,7 +35,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
                   isDense: true,
                   fillColor: Colors.white,
                   filled: true,
-                  hintText: "Kuch bhi Puch lo",
+                  hintText: "Ask me anything !",
                   hintStyle: TextStyle(fontSize: 14),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)))),
@@ -48,8 +48,8 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
               child: IconButton(
                 onPressed: _c.askQuestion,
                 icon: const Icon(
-                  Icons.rocket_launch_rounded,
-                  color: Colors.white,
+                  Icons.telegram,
+                 // color: Colors.white,
                   size: 28,
                 ),
               ),

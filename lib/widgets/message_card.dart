@@ -46,7 +46,7 @@ class MessageCard extends StatelessWidget {
       'Please Wait...',
       textStyle: const TextStyle(
        // fontSize: 32.0,
-        //fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.bold,
       ),
       speed: const Duration(milliseconds: 100),
     ),
