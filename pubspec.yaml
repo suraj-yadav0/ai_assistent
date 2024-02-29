@@ -47,6 +47,8 @@ dependencies:
   http: ^1.2.1
  
   animated_text_kit: ^4.2.2
+  dart_openai: ^5.1.0
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

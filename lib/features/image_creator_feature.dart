@@ -1,7 +1,11 @@
 import 'package:ai_assistent/controllers/image_controller.dart';
 import 'package:ai_assistent/widgets/custom_btn.dart';
+import 'package:ai_assistent/widgets/custom_loading.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_assistent/helper/global.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class ImageCreatorFeature extends StatefulWidget {
@@ -45,11 +49,26 @@ class _ImageCreatorFeatureState extends State<ImageCreatorFeature> {
             Container(
               height: mq.height * .5,
               alignment: Alignment.center,
-              child: Lottie.asset('assets/lottie/welcome2.json', ),
+              child: Obx(() => _aiImage()),
               
             ),
-            CustomButton(onTap: (){}, text: 'Create')
+            CustomButton(onTap: _c.createAIimage, text: 'Create')
           ]),
     );
+
+
   }
+  
+Widget _aiImage() => switch(_c.status.value) {
+Status.none => Lottie.asset('assets/lottie/welcome2.json'),
+Status.complete => ClipRRect(
+  borderRadius: const BorderRadius.all(Radius.circular(10)),
+  child: CachedNetworkImage(
+          imageUrl: _c.url,
+          placeholder: (context, url) => const CustomLaoding(),
+          errorWidget: (context, url, error) => const SizedBox(),
+       ),
+),
+     Status.loading => const CustomLaoding()
+};
 }
