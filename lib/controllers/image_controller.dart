@@ -1,4 +1,5 @@
 import 'package:ai_assistent/helper/global.dart';
+import 'package:ai_assistent/helper/mydialog.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,8 +26,11 @@ class ImageController extends GetxController {
 
 url = image.data[0].url.toString();
 
-      texc.text = "";
+      // texc.text = texc.text;
       status.value = Status.complete;
+      MyDialog.successs('Image Created Succefuly');
+    } else {
+      MyDialog.info('Please Provide some Image Description');
     }
   }
 }

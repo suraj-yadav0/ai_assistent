@@ -23,6 +23,18 @@ class _ImageCreatorFeatureState extends State<ImageCreatorFeature> {
       appBar: AppBar(
         title: const Text('AI Image Creator'),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 6, bottom: 6),
+        child: FloatingActionButton(
+          onPressed: () {},
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+          child: const Icon(Icons.save_alt_rounded, size: 26,),
+        ),
+      ),
       body: ListView(
           physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.only(
@@ -33,7 +45,7 @@ class _ImageCreatorFeatureState extends State<ImageCreatorFeature> {
           children: [
             Expanded(
               child: TextFormField(
-               controller: _c.texc,
+                controller: _c.texc,
                 minLines: 2,
                 maxLines: null,
                 textAlign: TextAlign.center,
@@ -50,25 +62,22 @@ class _ImageCreatorFeatureState extends State<ImageCreatorFeature> {
               height: mq.height * .5,
               alignment: Alignment.center,
               child: Obx(() => _aiImage()),
-              
             ),
             CustomButton(onTap: _c.createAIimage, text: 'Create')
           ]),
     );
-
-
   }
-  
-Widget _aiImage() => switch(_c.status.value) {
-Status.none => Lottie.asset('assets/lottie/welcome2.json'),
-Status.complete => ClipRRect(
-  borderRadius: const BorderRadius.all(Radius.circular(10)),
-  child: CachedNetworkImage(
-          imageUrl: _c.url,
-          placeholder: (context, url) => const CustomLaoding(),
-          errorWidget: (context, url, error) => const SizedBox(),
-       ),
-),
-     Status.loading => const CustomLaoding()
-};
+
+  Widget _aiImage() => switch (_c.status.value) {
+        Status.none => Lottie.asset('assets/lottie/welcome2.json'),
+        Status.complete => ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            child: CachedNetworkImage(
+              imageUrl: _c.url,
+              placeholder: (context, url) => const CustomLaoding(),
+              errorWidget: (context, url, error) => const SizedBox(),
+            ),
+          ),
+        Status.loading => const CustomLaoding()
+      };
 }

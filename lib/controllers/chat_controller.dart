@@ -1,4 +1,5 @@
 import 'package:ai_assistent/api/apis.dart';
+import 'package:ai_assistent/helper/mydialog.dart';
 import 'package:ai_assistent/model/message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,6 +32,8 @@ class ChatController extends GetxController {
       list.add(Message(msg: res, msgType: MessageType.bot));
 
       texc.text = "";
+    }else {
+      MyDialog.info('Please Ask Something !');
     }
   }
 
