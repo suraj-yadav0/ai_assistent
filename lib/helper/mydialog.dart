@@ -1,3 +1,4 @@
+import 'package:ai_assistent/widgets/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,12 @@ static void successs(String msg) {
 
 static void error(String msg ) {
   Get.snackbar('Error', msg, backgroundColor: Colors.red.withOpacity(0.7),colorText: Colors.white);
+}
+
+//for loading
+
+static void showLoading() {
+  Get.dialog(const Center(child: CustomLaoding(),));
 }
 
 }

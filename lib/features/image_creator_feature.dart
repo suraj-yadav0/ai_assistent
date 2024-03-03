@@ -22,19 +22,34 @@ class _ImageCreatorFeatureState extends State<ImageCreatorFeature> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('AI Image Creator'),
+        actions: [
+          Obx(
+            () => _c.status.value == Status.complete
+                ? IconButton(
+                    padding: const EdgeInsets.only(right: 6),
+                    onPressed: _c.shareImage,
+                    icon: const Icon(Icons.share))
+                : const SizedBox(),
+          )
+        ],
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 6, bottom: 6),
-        child: FloatingActionButton(
-          onPressed: () {},
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(15),
-            ),
-          ),
-          child: const Icon(Icons.save_alt_rounded, size: 26,),
-        ),
-      ),
+      floatingActionButton: Obx(() => _c.status.value == Status.complete
+          ? Padding(
+              padding: const EdgeInsets.only(right: 6, bottom: 6),
+              child: FloatingActionButton(
+                onPressed: _c.downloadImage,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                ),
+                child: const Icon(
+                  Icons.save_alt_rounded,
+                  size: 26,
+                ),
+              ),
+            )
+          : const SizedBox()),
       body: ListView(
           physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.only(
