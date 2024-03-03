@@ -1,7 +1,10 @@
 import 'package:ai_assistent/controllers/translator_controlller.dart';
 import 'package:ai_assistent/helper/global.dart';
+import 'package:ai_assistent/widgets/custom_btn.dart';
+import 'package:ai_assistent/widgets/language_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LanguageTranslator extends StatefulWidget {
   const LanguageTranslator({super.key});
@@ -29,19 +32,24 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // from language
-              Container(
-                height: 50,
-                alignment: Alignment.center,
-                width: mq.width * .4,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.blue,
-                  ),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                child: const Text("Auto"),
+              InkWell(
+                onTap: () => Get.bottomSheet(LanguageSheet(c: _c, s: _c.from)),
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
+                child: Container(
+                    height: 50,
+                    alignment: Alignment.center,
+                    width: mq.width * .4,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue,
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                    child: Obx(
+                      () => Text(_c.from.isEmpty ? "Auto" : _c.from.value),
+                    )),
               ),
 
               IconButton(
@@ -53,20 +61,25 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
               ),
 // TO Button,
 
-              Container(
-                height: 50,
-                alignment: Alignment.center,
-                width: mq.width * .4,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.blue,
-                  ),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                child: const Text("TO"),
-              )
+             InkWell(
+                onTap: () => Get.bottomSheet(LanguageSheet(c: _c, s: _c.to)),
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
+                child: Container(
+                    height: 50,
+                    alignment: Alignment.center,
+                    width: mq.width * .4,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue,
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                    child: Obx(
+                      () => Text(_c.to.isEmpty ? "To" : _c.to.value),
+                    )),
+              ),
             ],
           ),
 
@@ -75,7 +88,7 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
             padding: EdgeInsets.symmetric(
                 horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
             child: TextFormField(
-                controller: _c.texc,
+              controller: _c.texc,
               minLines: 5,
               maxLines: null,
               textAlign: TextAlign.center,
@@ -88,23 +101,27 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
             ),
           ),
 
-           SizedBox(height: mq.height * 0.04,),
-          // for output,
-if(_c.resultc.text.isNotEmpty)
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-            child: TextFormField(
-               controller: _c.resultc ,
-              // minLines: 5,
-              maxLines: null,
-              textAlign: TextAlign.center,
-              onTapOutside: (event) => FocusScope.of(context).unfocus(),
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)))),
-            ),
+          SizedBox(
+            height: mq.height * 0.04,
           ),
+          // for output,
+          if (_c.resultc.text.isNotEmpty)
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+              child: TextFormField(
+                controller: _c.resultc,
+                // minLines: 5,
+                maxLines: null,
+                textAlign: TextAlign.center,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+              ),
+            ),
+
+            CustomButton(onTap: (){}, text: 'Translate')
         ],
       ),
     );
