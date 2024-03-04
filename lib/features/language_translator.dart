@@ -121,7 +121,7 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
               ),
             ),
 
-            CustomButton(onTap: (){}, text: 'Translate')
+            CustomButton(onTap: _c.translate, text: 'Translate')
         ],
       ),
     );

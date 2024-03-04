@@ -199,8 +199,16 @@ class TranslatorController extends GetxController {
     Message(msg: "Hello, How Can I help You ?", msgType: MessageType.bot)
   ].obs;
 
-  Future<void> askQuestion() async {
-    if (texc.text.trim().isNotEmpty) {
+  Future<void> translate() async {
+    if (texc.text.trim().isNotEmpty && to.isNotEmpty) {
+
+      String promt ='';
+
+      if(from.isNotEmpty) {
+        promt = 'Can you translate given text from ${from.value} to ${to.value}:\n ${texc.text}';
+      }else {
+           promt = 'Can you translate given text to ${to.value}:\n ${texc.text}';
+      }
       // final res = await APIs.getAnswer(texc.text);
 
       texc.text = "";
