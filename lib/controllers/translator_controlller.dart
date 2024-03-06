@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:ai_assistent/api/apis.dart';
 import 'package:ai_assistent/helper/mydialog.dart';
 import 'package:ai_assistent/model/message.dart';
 import 'package:flutter/material.dart';
@@ -209,10 +212,12 @@ class TranslatorController extends GetxController {
       }else {
            promt = 'Can you translate given text to ${to.value}:\n ${texc.text}';
       }
-      // final res = await APIs.getAnswer(texc.text);
 
-      texc.text = "";
-    } else {
+      final res = await APIs.getAnswer(texc.text);
+      resultc.text = res;
+
+    } else { 
+      if(to.isEmpty) MyDialog.info('Select To Language!');
       MyDialog.info('Please Ask Something !');
     }
   }
