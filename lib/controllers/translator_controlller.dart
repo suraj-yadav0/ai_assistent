@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:ai_assistent/api/apis.dart';
+import 'package:ai_assistent/controllers/image_controller.dart';
 import 'package:ai_assistent/helper/mydialog.dart';
 import 'package:ai_assistent/model/message.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ class TranslatorController extends GetxController {
   final resultc = TextEditingController();
 
   final from = ''.obs, to = ''.obs;
+
+  final status =  Status.none.obs;
 
   // list of languages available
   final lang = const [
@@ -138,7 +142,7 @@ class TranslatorController extends GetxController {
     "Oromo",
     "Oriya",
     "Ossetic",
-    "Panjabi",
+    "Punjabi",
     "Pali",
     "Polish",
     "Pushto",
@@ -204,7 +208,7 @@ class TranslatorController extends GetxController {
 
   Future<void> translate() async {
     if (texc.text.trim().isNotEmpty && to.isNotEmpty) {
-
+status.value = Status.loading;
       String promt ='';
 
       if(from.isNotEmpty) {
@@ -213,12 +217,24 @@ class TranslatorController extends GetxController {
            promt = 'Can you translate given text to ${to.value}:\n ${texc.text}';
       }
 
-      final res = await APIs.getAnswer(texc.text);
-      resultc.text = res;
+      final res = await APIs.getAnswer(promt);
+      resultc.text = utf8.decode(res.codeUnits);
 
-    } else { 
+
+      status.value = Status.complete;
+
+    } else {
+      status.value = Status.none; 
       if(to.isEmpty) MyDialog.info('Select To Language!');
       MyDialog.info('Please Ask Something !');
+    }
+  }
+
+  void swapLanguages() {
+    if(to.isNotEmpty && from.isNotEmpty) {
+      final t = to.value;
+      to.value = from.value;
+      from.value = t;
     }
   }
 }
