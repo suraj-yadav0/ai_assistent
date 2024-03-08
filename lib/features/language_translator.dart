@@ -56,12 +56,15 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
               ),
 
               IconButton(
-                onPressed: _c.swapLanguages,
-                icon:  Obx(() => Icon(
-                  CupertinoIcons.repeat,
-                  color: _c.to.isNotEmpty && _c.from.isNotEmpty ? Colors.blue :   Colors.grey ,
-                ),)
-              ),
+                  onPressed: _c.swapLanguages,
+                  icon: Obx(
+                    () => Icon(
+                      CupertinoIcons.repeat,
+                      color: _c.to.isNotEmpty && _c.from.isNotEmpty
+                          ? Colors.blue
+                          : Colors.grey,
+                    ),
+                  )),
 // TO Button,
 
               InkWell(
@@ -87,7 +90,7 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
           ),
 
           // for input
-    Padding(
+          Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
             child: TextFormField(
@@ -110,10 +113,7 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
             height: mq.height * 0.04,
           ),
           // for output,
-          if (_c.resultc.text.isNotEmpty)
-            Obx(
-              () => _translateResult()
-            ),
+          if (_c.resultc.text.isNotEmpty) Obx(() => _translateResult()),
 
           CustomButton(onTap: _c.translate, text: 'Translate')
         ],
@@ -121,22 +121,22 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
     );
   }
 
-   Widget _translateResult() => switch (_c.status.value) {
+  Widget _translateResult() => switch (_c.status.value) {
         Status.none => const SizedBox(),
         Status.complete => Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-                child: TextFormField(
-                  controller: _c.resultc,
-                  // minLines: 5,
-                  maxLines: null,
-                  textAlign: TextAlign.center,
-                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)))),
-                ),
-              ),
-        Status.loading => const  Align(child: CustomLaoding())
+            padding: EdgeInsets.symmetric(
+                horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+            child: TextFormField(
+              controller: _c.resultc,
+              // minLines: 5,
+              maxLines: null,
+              textAlign: TextAlign.center,
+              onTapOutside: (event) => FocusScope.of(context).unfocus(),
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)))),
+            ),
+          ),
+        Status.loading => const Align(child: CustomLaoding())
       };
 }
