@@ -1,4 +1,5 @@
 import 'package:ai_assistent/helper/global.dart';
+import 'package:ai_assistent/main.dart';
 import 'package:ai_assistent/model/onboard.dart';
 import 'package:ai_assistent/screens/home_screen.dart';
 import 'package:ai_assistent/widgets/custom_btn.dart';
@@ -58,7 +59,7 @@ class OnboardingScreen extends StatelessWidget {
                 child: Text(
                   list[index].subtitle,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 13.5, letterSpacing: .5),
+                  style: TextStyle(fontSize: 13.5, letterSpacing: .5,color: Theme.of(context).lightTextColor),
                 ),
               ),
 
