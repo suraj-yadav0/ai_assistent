@@ -115,7 +115,10 @@ class _LanguageTranslatorState extends State<LanguageTranslator> {
           // for output,
           if (_c.resultc.text.isNotEmpty) Obx(() => _translateResult()),
 
-          CustomButton(onTap: _c.translate, text: 'Translate')
+          CustomButton(
+            onTap: _c.googleTranslate,
+            // onTap: _c.translate,
+           text: 'Translate')
         ],
       ),
     );
