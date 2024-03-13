@@ -32,28 +32,28 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     //intialize media querry
     mq = MediaQuery.sizeOf(context);
-    return Scaffold(
+    return const Scaffold(
       body: SizedBox(
         width: double.maxFinite,
         child: Column(
           children: [
-            const Spacer(
+             Spacer(
               flex: 2,
             ),
-            Card(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Padding(
-                padding: EdgeInsets.all(mq.width * .5),
-                child: Image.asset(
-                  "assets/images/ai.png",
-                  width: mq.width * .4,
-                ),
-              ),
-            ),
-            const Spacer(),
-            const CustomLaoding(),
-            const Spacer(),
+            // Card(
+            //   shape: const RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.all(Radius.circular(20))),
+            //   child: Padding(
+            //     padding: EdgeInsets.all(mq.width * .5),
+            //     child: Image.asset(
+            //       "assets/images/assistent.avif",
+            //      width: mq.width * .4,
+            //     ),
+            //   ),
+            // ),
+            // const Spacer(),
+           CustomLaoding(),
+             Spacer(),
           ],
         ),
       ),

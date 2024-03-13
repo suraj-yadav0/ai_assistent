@@ -37,13 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
     Animate.restartOnHotReload = true;
     return Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          backgroundColor: Colors.white,
+          
+         // backgroundColor: Colors.white,
           title: const Text(
             appName,
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.w500, color: Colors.blue),
+       
           ),
           actions: [
             Padding(
@@ -52,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {},
                   icon: const Icon(
                     Icons.brightness_4_rounded,
-                    color: Colors.blue,
+                    
                     size: 26,
                   )),
             )

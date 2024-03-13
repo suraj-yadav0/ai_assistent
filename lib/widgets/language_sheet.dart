@@ -1,7 +1,6 @@
 import 'package:ai_assistent/controllers/translator_controlller.dart';
 import 'package:ai_assistent/helper/global.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class LanguageSheet extends StatefulWidget {
@@ -20,9 +19,9 @@ class _LanguageSheetState extends State<LanguageSheet> {
   
     return Container(
       height: mq.height * .5,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(15),
           topRight: Radius.circular(15),
         ),

@@ -1,4 +1,5 @@
 import 'package:ai_assistent/helper/global.dart';
+import 'package:ai_assistent/main.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -13,7 +14,7 @@ final String text;
         style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             elevation: 0,
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).bttonColor,
             textStyle: const TextStyle(
               fontSize: 16,
               color: Colors.white,
