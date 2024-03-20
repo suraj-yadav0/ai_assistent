@@ -22,7 +22,7 @@ class Pref {
 
   //for storing theme data
 
-  static bool get isDarMode => _box.get('isDarkMode') ?? false;
+  static bool get isDarkMode => _box.get('isDarkMode') ?? false;
 
   static set isDarkMode(bool v) => _box.put('isDarkMode', v);
 

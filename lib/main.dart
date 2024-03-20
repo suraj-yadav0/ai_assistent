@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       //dark,
       darkTheme: ThemeData(
           // useMaterial3: false,
-          brightness: Brightness.light,
+          brightness: Brightness.dark,
           appBarTheme: const AppBarTheme(
             elevation: 0,
             centerTitle: true,
@@ -41,7 +41,8 @@ class MyApp extends StatelessWidget {
 
       // light theme
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
+          appBarTheme:  const AppBarTheme(
+          
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.white,

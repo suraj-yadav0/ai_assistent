@@ -39,6 +39,6 @@ class ChatController extends GetxController {
 
   void _scrollDown() {
     scrollc.animateTo(scrollc.position.maxScrollExtent,
-        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
   }
 }

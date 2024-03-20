@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-const appName = 'Ai Assitent';
+const appName = 'AI Assitent';
 late Size mq;
 
 // api key

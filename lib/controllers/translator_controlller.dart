@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
+
 
 import 'package:ai_assistent/api/apis.dart';
 import 'package:ai_assistent/controllers/image_controller.dart';
