@@ -6,9 +6,9 @@
 I'm a Flutter Developer..and this My..
 
 
-# AI Assistent
+# AI Assistant
 
-AI Assistent built using flutter and it uses ChatGpts's API for ChatBot and Text to Image genration.It also has translator feature which works with the Google translator module.
+AI Assistant built using flutter and it uses ChatGpts's API for ChatBot and Text to Image genration.It also has translator feature which works with the Google translator module.
 
 
 ## Deployment
